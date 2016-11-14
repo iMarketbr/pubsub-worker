@@ -1,0 +1,5 @@
+env=dev
+
+cloud.auth.json.name=imarket-gcloud.json
+
+cloud.pubsub.subscription.market.created.email=send-market-created-email

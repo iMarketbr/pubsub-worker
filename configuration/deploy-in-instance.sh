@@ -1,12 +1,12 @@
 #!/bin/bash
 
-APP_API=imarket-api
+APP_WORKER=pubsub-worker
 IMARKET_API_PROPERTIES=/opt/application.properties
 
-cp -rfv /opt/bucket/$APP_API/prod/production.properties $IMARKET_API_PROPERTIES
+cp -rfv /opt/bucket/$APP_WORKER/prod/production.properties $IMARKET_API_PROPERTIES
 
-if docker ps | awk -v app="APP_API" 'NR>1{  ($(NF) == APP_API )  }'; then 
-    docker stop "$APP_API" && docker rm -f "$APP_API" 
+if docker ps | awk -v app="APP_WORKER" 'NR>1{  ($(NF) == APP_WORKER )  }'; then 
+    docker stop "$APP_WORKER" && docker rm -f "$APP_WORKER" 
 fi
 
-docker run --name $APP_API -d -p 9090:9090 -v $IMARKET_API_PROPERTIES:$IMARKET_API_PROPERTIES imarket/$APP_API
+docker run --name $APP_WORKER -d -v $WORKER_PROPERTIES:$WORKER_PROPERTIES imarket/$APP_WORKER

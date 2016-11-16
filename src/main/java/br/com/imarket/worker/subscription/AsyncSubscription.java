@@ -33,6 +33,7 @@ public class AsyncSubscription<T> {
 		
 		public void pull(String subscriptionName, AyncPull<T> callback) {
 			pubsub.getSubscription(subscriptionName).pullAsync(message -> {
+				LOGGER.info("Consuming market {}", message.getPayloadAsString());
 				try {
 					T t = jacksonObjectMapper.readValue(message.getPayloadAsString(), clazz);
 					callback.received(t);

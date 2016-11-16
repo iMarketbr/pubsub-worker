@@ -49,6 +49,9 @@ dependencies {
     compile "com.google.cloud:google-cloud:$GCLOUD_VERSION"
     compile "com.google.cloud:google-cloud-pubsub:$GCLOUD_VERSION"
     
+    compile 'com.sendgrid:sendgrid-java:3.1.0'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    
     // Tests
     testCompile 'org.springframework:spring-test'
     testCompile 'junit:junit'

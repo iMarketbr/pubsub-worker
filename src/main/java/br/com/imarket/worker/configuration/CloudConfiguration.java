@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import com.google.cloud.AuthCredentials;
 import com.google.cloud.pubsub.PubSub;
@@ -15,17 +16,18 @@ class CloudConfiguration {
 	
 	@Value("${cloud.auth.json.name}")
 	private String gcloudJsonAuthName;
-	@Value("${env}")
-	private String env;
 	
-	@Bean
-	AuthCredentials authCredentials() throws IOException  {
-		if ("prod".equals(env)) {
-			return AuthCredentials.createApplicationDefaults();
-		}
-		
+	@Profile("dev")
+	@Bean("authCredentials")
+	AuthCredentials devAuthCredentials() throws IOException  {
 		ClassLoader classLoader = getClass().getClassLoader();
 		return AuthCredentials.createForJson(classLoader.getResourceAsStream(gcloudJsonAuthName));
+	}
+	
+	@Profile("prod")
+	@Bean("authCredentials")
+	AuthCredentials prodAuthCredentials() throws IOException  {
+		return AuthCredentials.createApplicationDefaults();
 	}
 
 	@Bean

@@ -1,5 +1,12 @@
-env=dev
+spring.profiles.active=dev
 
 cloud.auth.json.name=imarket-gcloud.json
-
 cloud.pubsub.subscription.market.created.email=send-market-created-email
+
+mail.template.url=https://storage.googleapis.com/mail.imarketbr.com/templates/
+mail.sendgrid.api.key=
+mail.market.created.from=contato@imarketbr.com
+mail.market.created.subject=Informações de login do seu novo mercado
+
+mail.market.created.template=login-created
+

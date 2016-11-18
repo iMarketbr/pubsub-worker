@@ -1,5 +1,7 @@
 spring.profiles.active=dev
 
+web.base.url=http://imarketbr.com/
+
 cloud.auth.json.name=imarket-gcloud.json
 cloud.pubsub.subscription.market.created.email=send-market-created-email
 

@@ -1,6 +1,8 @@
 spring.profiles.active=dev
+spring.thymeleaf.mode=LEGACYHTML5
 
 web.base.url=http://imarketbr.com/
+
 
 cloud.auth.json.name=imarket-gcloud.json
 cloud.pubsub.subscription.market.created.email=send-market-created-email

@@ -13,7 +13,7 @@ class TemplateConfiguration {
 	@Bean
 	TemplateResolver templateResolver() {
 		TemplateResolver templateResolver = new UrlTemplateResolver();
-		templateResolver.setTemplateMode("HTML5");
+		templateResolver.setTemplateMode("LEGACYHTML5");
 		templateResolver.setOrder(1);
 		templateResolver.setCharacterEncoding("UTF-8");
 

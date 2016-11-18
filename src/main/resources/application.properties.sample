@@ -1,5 +1,4 @@
 spring.profiles.active=dev
-spring.thymeleaf.mode=LEGACYHTML5
 
 web.base.url=http://imarketbr.com/
 

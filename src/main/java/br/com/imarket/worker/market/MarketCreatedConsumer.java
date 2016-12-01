@@ -15,14 +15,14 @@ public class MarketCreatedConsumer {
 	@Value("${cloud.pubsub.subscription.market.created.email}")
 	private String subscriptionName;
 	@Autowired
-	private AsyncSubscription<Market> subscription;
+	private AsyncSubscription<MarketCreated> subscription;
 	@Autowired
 	private ApplicationEventPublisher event;
 	
 	@PostConstruct
 	public void consume() {
-		subscription.from(Market.class).pull(subscriptionName, market -> {
-			event.publishEvent(new MarketCreatedEvent(market));
+		subscription.from(MarketCreated.class).pull(subscriptionName, marketCreated -> {
+			event.publishEvent(new MarketCreatedEvent(marketCreated));
 		});
 	}
 }

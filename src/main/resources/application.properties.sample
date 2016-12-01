@@ -1,14 +1,14 @@
 spring.profiles.active=dev
 
-web.base.url=http://imarketbr.com/
+web.base.url=http://dev.imarketbr.com:8080
+web.change.password.url=${web.base.url}/alterar-senha
 
 cloud.auth.json.name=imarket-gcloud.json
-cloud.pubsub.subscription.market.created.email=send-market-created-email
+cloud.pubsub.subscription.market.created.email=send-market-created-email-sandbox
 
 mail.template.url=https://storage.googleapis.com/mail.imarketbr.com/templates/
 mail.sendgrid.api.key=
 mail.market.created.from=contato@imarketbr.com
 mail.market.created.subject=Informações de login do seu novo mercado
 
-mail.market.created.template=login-created
-
+mail.market.created.template=market/market-login-created

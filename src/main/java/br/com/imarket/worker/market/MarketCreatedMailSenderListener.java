@@ -16,7 +16,7 @@ class MarketCreatedMailSenderListener {
 	@Autowired
 	private EmailSender sendGridSender;
 	@Autowired
-	private MarketToEmailContentConverter converter;
+	private MarketCreatedToEmailContentConverter converter;
 	
 	
 	@Value("${mail.market.created.from}")
@@ -29,13 +29,13 @@ class MarketCreatedMailSenderListener {
 	@Async
 	@EventListener
 	void send(MarketCreatedEvent event) {
-		Market market = event.getMarket();
+		MarketCreated marketCreated = event.getMarketCreated();
 		
 		EmailTemplate template = new EmailToBuilder(emailFrom)
-						.to(market.getLoginInfo().getEmail())
+						.to(marketCreated.getMarket().getLoginInfo().getEmail())
 						.withSubject(emailSubject)
 						.usingTemplate(emailTemplate)
-						.withContent(converter.convert(market))
+						.withContent(converter.convert(marketCreated))
 						.build();
 
 		sendGridSender.send(template);

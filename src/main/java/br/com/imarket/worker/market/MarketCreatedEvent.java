@@ -2,14 +2,14 @@ package br.com.imarket.worker.market;
 
 public class MarketCreatedEvent {
 
-	private final Market market;
+	private final MarketCreated marketCreated;
 
-	public MarketCreatedEvent(Market market) {
-		this.market = market;
+	public MarketCreatedEvent(MarketCreated marketCreated) {
+		this.marketCreated = marketCreated;
+	}
+
+	public MarketCreated getMarketCreated() {
+		return marketCreated;
 	}
 	
-	public Market getMarket() {
-		return market;
-	}
-
 }
